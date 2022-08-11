@@ -1,4 +1,5 @@
-const Teacher = ()=>{
-    return <h1>Teacher Page</h1>
+import Teacher from "../../components/teacherComponents/teacher";
+const TeacherPage = ()=>{
+    return <Teacher/>
 }
-export default Teacher;
+export default TeacherPage;
