@@ -1,9 +1,15 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Banner from "../components/Home/Banner"
 
 export default function Home() {
   return (
-   <h1>Hello</h1>
+    <>
+    <Head>
+      <title>Home | Classroom</title>
+      <meta  name="description" content="Join Us !Keep track of all your attendance" />
+    </Head>
+   <Banner />
+   </>
+
   )
 }
