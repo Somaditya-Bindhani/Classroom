@@ -10,7 +10,7 @@ const SignUp = (props) => {
   const authCtx = useContext(AuthContext);
   const { isLoading, isError, sendRequest, clearError } = useHttp();
 
-  const [imageUrl, setImageUrl] = useState(defaultImage);
+  const [imageUrl, setImageUrl] = useState("https://i.stack.imgur.com/34AD2.jpg");
   const [file, setFile] = useState(null);
 
   const imageRef = useRef();
@@ -144,6 +144,7 @@ const SignUp = (props) => {
   today = yyyy + "-" + mm + "-" + dd;
 
   return (
+    
     <section className={singUpStyles}>
       {isLoading && <LoadingSpinner />}
       {isError && !isLoading && (
