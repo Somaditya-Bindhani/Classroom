@@ -129,12 +129,12 @@ const SignUp = (props) => {
       );
       authCtx.login(data.token, data.id);
     } catch (error) {
-      // nameReset();
-      // emailReset();
-      // passwordReset();
-      // cpasswordReset();
-      // collegeNameReset();
-      // dobReset();
+      nameReset();
+      emailReset();
+      passwordReset();
+      cpasswordReset();
+      collegeNameReset();
+      dobReset();
     }
   };
   var today = new Date();

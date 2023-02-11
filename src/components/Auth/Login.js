@@ -44,8 +44,8 @@ const Login = (props) => {
       authCtx.login(data.token, data.id);
       console.log(data);
     } catch (error) {
-      // emailReset();
-      // passwordReset();
+      emailReset();
+      passwordReset();
     }
   };
   let formIsInvalid = true;
@@ -84,7 +84,7 @@ const Login = (props) => {
         <div className={stylesPassword}>
           <label htmlFor="password">Your Password</label>
           <input
-            type="text"
+            type="password"
             id="password"
             required
             value={password}
