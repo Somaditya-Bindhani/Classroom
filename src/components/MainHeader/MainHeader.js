@@ -2,6 +2,7 @@ import { NavLink, useLocation } from "react-router-dom";
 import styles from "./MainHeader.module.css";
 import AuthContext from "../../store/auth-context";
 import { useContext, useState } from "react";
+import useHttp from "../../hooks/use-http";
 const Navbar = () => {
   const [resBar, setResBar] = useState();
   const authCtx = useContext(AuthContext);
@@ -22,6 +23,29 @@ const Navbar = () => {
   if (location.pathname === "/") {
     HomePageSmooth = true;
   }
+
+  const { sendRequest } = useHttp();
+
+  const submitHandler = async () => {
+    const logInData = {
+      email: "john@gmail.com",
+      password: "classroom",
+    };
+    let data;
+    try {
+      console.log("called");
+      data = await sendRequest(
+        `${process.env.REACT_APP_URL3}/login`,
+        "POST",
+        JSON.stringify(logInData),
+        { "content-type": "application/json" }
+      );
+      authCtx.login(data.token, data.id);
+      console.log(data);
+    } catch (error) {
+      console.error("Error logging in Demo:", error);
+    }
+  };
   return (
     <nav>
       <NavLink className={styles.logo} to="/" exact onClick={clickHandlerClose}>
@@ -51,7 +75,7 @@ const Navbar = () => {
               </a>
             </li>
           )}
-        
+
           <li>
             <a href="#footer" onClick={clickHandlerClose}>
               Sponsers
@@ -92,6 +116,18 @@ const Navbar = () => {
                 onClick={clickHandlerClose}
               >
                 Login
+              </NavLink>
+            </li>
+          )}
+          {!userLoggedin && (
+            <li>
+              <NavLink
+                activeClassName={styles.active}
+                to={`/dashboard/${studentId}`}
+                exact
+                onClick={submitHandler}
+              >
+                Demo
               </NavLink>
             </li>
           )}
